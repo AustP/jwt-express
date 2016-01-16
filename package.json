@@ -1,0 +1,25 @@
+{
+  "name": "jwt-express",
+  "version": "1.0.0",
+  "description": "Climb aboard the JWT Express and use JWTs in your Express app with ease!",
+  "main": "jwt-express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jwt",
+    "json",
+    "token",
+    "express",
+    "session"
+  ],
+  "author": "AustP <austp17@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AustP/jwt-express"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "jsonwebtoken": "^5.5.4"
+  }
+}
