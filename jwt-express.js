@@ -230,7 +230,7 @@ module.exports = {
     
     /**
      * require - requires that data in the JWT's payload meets certain requirements
-     *     If only the key is passed, it simply checks that payload[key] !== undefined
+     *     If only the key is passed, it simply checks that payload[key] == true
      * @param string key The key used to load the data from the payload
      * @param string operator (Optional) The operator to compare the information
      * @param mixed value (Optional) The value to compare the data to
@@ -250,8 +250,8 @@ module.exports = {
             ok;
             
             if (!operator) {
-                operator = '!==';
-                value = undefined;
+                operator = '==';
+                value = true;
             }
             
             if (operator == '==') {
