@@ -60,6 +60,13 @@ Returns a middleware function that ensures a JWT is valid and fresh. Useful to p
 #### jwt.clear()
 If using cookies, this method will clear the current JWT out of the cookie.
 
+#### jwt.create(string|function secret, object payload)
+Returns a newly created / signed [JWT Object](#JWTObject) from the payload.
+
+*secret* - can be either a function or a string. If it is a string, that will be used to sign / verify with. If it is a function, that function must return a string. The returned string will be used to sign / verify with. When the function is called, it will be called with the payload object as the first parameter.
+
+*payload* - the payload to use.
+
 #### jwt.require(string key, [string operator, mixed value])
 Returns a middleware function that requires the payload to contain / match certain data. This method will trigger error handling if the JWT fails the requirement.
 
@@ -89,6 +96,8 @@ Returns a middleware function that ensures a JWT is valid. This method will trig
 ## Response Object
 #### res.jwt(object payload) <a name="resjwt"></a>
 Returns a newly created / signed [JWT Object](#JWTObject) from the payload. If you are using cookies, it will automatically store the JWT in the cookie as well.
+
+*payload* - the payload to use.
 
     app.post('/login', function(req, res) {
         var user = getUserDataSomehow();

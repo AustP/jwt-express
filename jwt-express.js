@@ -136,6 +136,29 @@ module.exports = {
         throw new JWTExpressError('init must be called before clear');
     },
     
+    /*
+     * create - creates a JWT without storing it
+     * @param string|function secret If secret is a string, that will be used
+     *     to verify / sign with. If secret is a function, that function will be
+     *     called with the payload as it's first parameter, and must
+     *     return a string which will be used to verify / sign with.
+     * @param object payload The payload of the JWT
+     * @return JWT
+     */
+    create: function(secret, payload) {
+        if (!secret) {
+            throw new ReferenceError('secret must be defined');
+        }
+        
+        if (typeof secret == 'string') {
+            var _secret = secret;
+            secret = function(payload) {return _secret};
+        }
+        
+        var jwt = new JWT(secret(payload), this.options);
+        return jwt.sign(payload);
+    },
+    
     /**
      * init - initialize jwt-express
      * @param string|function secret If secret is a string, that will be used
