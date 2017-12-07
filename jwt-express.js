@@ -273,11 +273,8 @@ module.exports = {
             ok;
             
             if (!operator) {
-                operator = '==';
-                value = true;
-            }
-            
-            if (operator == '==') {
+                ok = !!data;
+            } else if (operator == '==') {
                 ok = data == value;
             } else if (operator == '===') {
                 ok = data === value;
