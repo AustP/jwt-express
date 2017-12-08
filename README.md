@@ -70,7 +70,7 @@ Returns a newly created / signed [JWT Object](#JWTObject) from the payload.
 #### jwt.require(string key, [string operator, mixed value])
 Returns a middleware function that requires the payload to contain / match certain data. This method will trigger error handling if the JWT fails the requirement.
 
-*key* - This is they key used to look up the value in the payload. If only this value is passed to `jwt.require()`, then the middleware function will check that the value is truthy (value == true).
+*key* - This is they key used to look up the value in the payload. If only this value is passed to `jwt.require()`, then the middleware function will check that the value is truthy (!!value).
 
 *operator* - If supplied, must be one of the following:
 
